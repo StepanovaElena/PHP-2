@@ -1,0 +1,23 @@
+{% extends "layouts/main.tmpl" %}
+
+{% block content %}
+
+<div class="general-product-block man-product-block" data-gender-type="man">
+    {% for item in products %}
+    <div class="product-block">
+        <a class="product-link" href="?p=card&a=card&id=<?=$item['id']?>">
+            <img src="../img/product_img/{{item.photo}}" alt="{{item.photo}}">
+            <div class="product-text">
+                <h4>{{item.name}}</h4>
+                <div class="price-block">
+                    <p class="old-price">${{item.price}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<a href="?c=product&a=catalog&page={{page}}">Еще</a>
+
+{% endblock %}
