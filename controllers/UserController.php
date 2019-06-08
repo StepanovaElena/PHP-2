@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\engine\App;
+use app\engine\Session;
 use app\models\entities\Users;
 
 class UserController extends Controller
@@ -21,7 +22,8 @@ class UserController extends Controller
     }
 
     public function actionLogout() {
-        session_destroy();
+        Session::call()->destroy();
+
         header("Location: /");
         exit();
     }
@@ -67,6 +69,13 @@ class UserController extends Controller
         }
 
         if (!empty ($userData)) {
+
+            //проверить наличие пользователя с таким же логином
+            $regUser = $this->getOneWhere('login', $userData['login']);
+
+            if (!empty($regUser)) {
+                throw new \Exception('Пользователь с таким логином уже существует!');
+            }
 
             $user = new Users();
             $user->id = null;

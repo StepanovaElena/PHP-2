@@ -13,6 +13,7 @@ use app\traits\Tsingletone;
 /**
  * Class App
  * @property Request $request
+ * @property Session $session
  * @property CartRepository $cartRepository
  * @property UserRepository $userRepository
  * @property ProductRepository $productRepository

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\engine\App;
+use app\engine\Session;
 use app\interfaces\IRenderer;
 
 abstract class Controller implements IRenderer
@@ -43,7 +44,9 @@ abstract class Controller implements IRenderer
                     'enter' => App::call()->userRepository->isAuth(),
                 ]),
                 'header' => $this->renderTemplate('header', [
-                    'ngoods' => App::call()->cartRepository->getSumWhere('quantity', 'session_id', session_id())]),
+                    'ngoods' => App::call()->cartRepository->getSumWhere('quantity', 'session_id', Session::call()->getId()),
+                    'enter' => App::call()->userRepository->isAuth()
+                ])
             ]);
         } else {
             return $this->renderTemplate($template, $params);

@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 use app\engine\App;
+use app\engine\Session;
 use app\models\entities\Orders;
 use app\models\entities\Positions;
 
@@ -14,6 +15,7 @@ class OrderController extends Controller
         $order = App::call()->orderRepository->getOneWhere('order_number',$order_number);
         $order->setStatus('confirm');
         App::call()->orderRepository->save($order);
+
         header('Location: /user/admin ');
         exit();
     }
@@ -23,6 +25,7 @@ class OrderController extends Controller
         $order = App::call()->orderRepository->getOneWhere('order_number',$order_number);
         $order->setStatus('decline');
         App::call()->orderRepository->save($order);
+
         header('Location: /user/admin ');
         exit();
     }
@@ -49,13 +52,13 @@ class OrderController extends Controller
             $order = new Orders();
             $order->order_number = $order_number;
             $order->date = date("Y-m-d H:i:s");
-            $order->session_id = session_id();
+            $order->session_id = Session::call()->getId();
             $order->user_login = App::call()->userRepository->getName();
             $order->user_id = App::call()->userRepository->getId();
             $order->status = 'new';
             $order->telephone = App::call()->request->getParams()['telephone'];
             $order->delivery = App::call()->request->getParams()['country'];
-            $order->total = App::call()->cartRepository->getSumWhere('subtotal','session_id', session_id());
+            $order->total = App::call()->cartRepository->getSumWhere('subtotal','session_id', Session::call()->getId());
             App::call()->orderRepository->save($order);
 
 
@@ -70,7 +73,7 @@ class OrderController extends Controller
                 App::call()->positionRepository->save($pos);
             }
 
-            App::call()->cartRepository->clear(session_id());
+            App::call()->cartRepository->clear(Session::call()->getId());
             header('Location: /cart ');
             exit();
 

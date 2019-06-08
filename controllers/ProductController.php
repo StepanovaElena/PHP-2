@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\engine\App;
+use app\engine\Session;
 
 class ProductController extends Controller
 {

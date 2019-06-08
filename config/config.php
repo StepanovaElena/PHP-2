@@ -29,6 +29,10 @@ return [
         'request' => [
             'class' => Request::class
         ],
+
+        'session' =>[
+            'class' => Session::class
+        ],
         //По хорошему сделать для репозиториев отедьное простое хранилище
         //без reflection
         'cartRepository' => [
