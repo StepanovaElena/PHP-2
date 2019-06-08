@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `session_id` varchar(255) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` varchar(45) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `subtotal` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (61,'9jd5f2n9kp96bdd03u5n266sdij5r0ei','Guest',2,5,'250'),(62,'9jd5f2n9kp96bdd03u5n266sdij5r0ei','Guest',3,2,'246');
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +202,7 @@ CREATE TABLE `users` (
   `role` varchar(45) NOT NULL,
   `hash` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +211,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'new_user1','User User1','$2y$10$SNhsB4JuEKsZhVDUn1pxvuGhrOV4nOA14Euokibv3beUcdaRrAK.m','new_user1@mail.ru','2019-05-31 14:05:35','','user','hash1'),(2,'new_user2','User User2','$2y$10$Acv4OXlmwx3/yh5T.eV.fe4hxmwJ2m1fBDdYCJdRRVRUzKXx1tHaG','new_user2@mail.ru','2019-05-31 14:06:26','','user','hash2'),(7,'admin','Admin','$2y$10$4C2MHy3EqaK0gvZ8C3SGMeVjW2u767ITdLa2o6WKkoPNZKAdE1phK','admin@mail.ru','2019-06-05 11:10:49','','admin','17781234145cf77909082ae0.25408292'),(8,'new_user','User User','$2y$10$IX/to7Wz8kkh.NFNo70w0OyHDA6sw089cB7lAYegIkz902nOYb/Xa','new_user@mail.ru','2019-06-05 19:51:06','','user','2341015035cf7f2fa358fa4.10371199'),(9,'new_user4','User4 User4','$2y$10$NPGEP2RafJhSzTy/2DKVPu.yyFSRl7drmfQfDg3v2L81gKAym9mdK','new_user4@mail.ru','2019-06-05 22:29:55','','user','7346423985cf818348a8c28.29838581'),(10,'new_user5','User5 User5','$2y$10$uccLqkGpTioUWpaJrw7MXedWGdsZTj/U0u/DP5jZ3G0TxFK3MXaai','new_user5@mail.ru','2019-06-06 16:23:23','','user','10614252825cf913cc082cb7.88872386');
+INSERT INTO `users` VALUES (1,'new_user1','User User1','$2y$10$SNhsB4JuEKsZhVDUn1pxvuGhrOV4nOA14Euokibv3beUcdaRrAK.m','new_user1@mail.ru','2019-05-31 14:05:35','','user','hash1'),(2,'new_user2','User User2','$2y$10$Acv4OXlmwx3/yh5T.eV.fe4hxmwJ2m1fBDdYCJdRRVRUzKXx1tHaG','new_user2@mail.ru','2019-05-31 14:06:26','','user','hash2'),(7,'admin','Admin','$2y$10$4C2MHy3EqaK0gvZ8C3SGMeVjW2u767ITdLa2o6WKkoPNZKAdE1phK','admin@mail.ru','2019-06-05 11:10:49','','admin','17781234145cf77909082ae0.25408292'),(8,'new_user','User User','$2y$10$IX/to7Wz8kkh.NFNo70w0OyHDA6sw089cB7lAYegIkz902nOYb/Xa','new_user@mail.ru','2019-06-05 19:51:06','','user','2341015035cf7f2fa358fa4.10371199'),(9,'new_user4','User4 User4','$2y$10$NPGEP2RafJhSzTy/2DKVPu.yyFSRl7drmfQfDg3v2L81gKAym9mdK','new_user4@mail.ru','2019-06-05 22:29:55','','user','7346423985cf818348a8c28.29838581'),(10,'new_user5','User5 User5','$2y$10$uccLqkGpTioUWpaJrw7MXedWGdsZTj/U0u/DP5jZ3G0TxFK3MXaai','new_user5@mail.ru','2019-06-06 16:23:23','','user','10614252825cf913cc082cb7.88872386'),(11,'new_user6','User6 User6','$2y$10$ylrv41BUILbSBGAXfbG/W.VCd6tsc8SWZxkoQB9OQ1bh3rivwgmPi','new_user6@mail.ru','2019-06-07 23:55:06','','user','18208456745cfad138de0cf6.91870129'),(12,'new_user6','User6 User6','$2y$10$j2ih7u5oNftjza53QPRTTe9lRH54h5p3kWSx4o9.IObsxwtOfAe2O','new_user6@mail.ru','2019-06-07 23:56:05','','user','19320326945cfacf651fae32.99057546');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -223,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-06 17:30:15
+-- Dump completed on 2019-06-08 10:13:34
